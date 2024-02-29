@@ -41,7 +41,7 @@ function generateRandomLocation() {
  const server = new WebSocket.Server({port: PORT});
 
  server.on("listening", () => {
-    console.log("WebSocket server is listening on port ${PORT}");
+    console.log(`WebSocket server is listening on port ${PORT}`);
 });
  
  server.on("connection", ws => {
