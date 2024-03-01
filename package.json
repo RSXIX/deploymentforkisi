@@ -1,4 +1,10 @@
 {
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@react-three/drei": "^9.97.6",
     "@react-three/fiber": "^8.15.16",
