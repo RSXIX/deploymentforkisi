@@ -33,6 +33,7 @@ function generateRandomLocation() {
     return JSON.stringify(unlockEvent);
  }
  
+ const express = require('express');
  
  const PORT = process.env.PORT || 3000;
  const INDEX = '/index.html';
