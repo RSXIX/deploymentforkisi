@@ -34,17 +34,21 @@ function generateRandomLocation() {
  }
  
  
- const WebSocket = require("ws");
+ const PORT = process.env.PORT || 3000;
+ const INDEX = '/index.html';
 
- const PORT =  process.env.PORT || 3000;
- 
- const server = new WebSocket.Server({port: PORT});
+ const server = express()
+   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+   .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  server.on("listening", () => {
+     console.log("WebSocket listening on port " + PORT);
+  });
 
- server.on("listening", () => {
-    console.log("WebSocket server listening on port " + PORT);
-});
+  const { Server } = require('ws');
+
+  const wss = new Server({ server });
  
- server.on("connection", ws => {
+ wss.on("connection", ws => {
     console.log("Client connected!");
  
     const interval = setInterval(() => {
