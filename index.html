@@ -212,9 +212,14 @@
 
     let counting = 0;
 
-    const PORT =  process.env.PORT || 3000;
+    var HOST = location.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(HOST);
+    var el;
 
-    const ws = new WebSocket(`ws://https://aqueous-sands-49739-625be7f06e14.herokuapp.com/`);
+    ws.onmessage = function (event) {
+      el = document.getElementById('server-time');
+      el.innerHTML = 'Server time: ' + event.data;
+    };
 
 
     ws.addEventListener("open", () => {
